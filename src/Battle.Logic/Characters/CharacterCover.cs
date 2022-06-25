@@ -61,7 +61,7 @@ namespace Battle.Logic.Characters
             {
                 if (defenderPosition.X < coverTileItem.X)
                 {
-                    if (map[(int)defenderPosition.X + 1, (int)defenderPosition.Y, (int)defenderPosition.Z] == CoverType.FullCover)
+                    if (map[(int)defenderPosition.X + 1, (int)defenderPosition.Y, (int)defenderPosition.Z] == MapObjectType.FullCover)
                     {
                         result.InEastFullCover = true;
                         result.InFullCover = true;
@@ -75,7 +75,7 @@ namespace Battle.Logic.Characters
                 }
                 if (defenderPosition.X > coverTileItem.X)
                 {
-                    if (map[(int)defenderPosition.X - 1, (int)defenderPosition.Y, (int)defenderPosition.Z] == CoverType.FullCover)
+                    if (map[(int)defenderPosition.X - 1, (int)defenderPosition.Y, (int)defenderPosition.Z] == MapObjectType.FullCover)
                     {
                         result.InWestFullCover = true;
                         result.InFullCover = true;
@@ -89,7 +89,7 @@ namespace Battle.Logic.Characters
                 }
                 if (defenderPosition.Z < coverTileItem.Z)
                 {
-                    if (map[(int)defenderPosition.X, (int)defenderPosition.Y, (int)defenderPosition.Z + 1] == CoverType.FullCover)
+                    if (map[(int)defenderPosition.X, (int)defenderPosition.Y, (int)defenderPosition.Z + 1] == MapObjectType.FullCover)
                     {
                         result.InNorthFullCover = true;
                         result.InFullCover = true;
@@ -103,7 +103,7 @@ namespace Battle.Logic.Characters
                 }
                 if (defenderPosition.Z > coverTileItem.Z)
                 {
-                    if (map[(int)defenderPosition.X, (int)defenderPosition.Y, (int)defenderPosition.Z - 1] == CoverType.FullCover)
+                    if (map[(int)defenderPosition.X, (int)defenderPosition.Y, (int)defenderPosition.Z - 1] == MapObjectType.FullCover)
                     {
                         result.InSouthFullCover = true;
                         result.InFullCover = true;
@@ -280,19 +280,19 @@ namespace Battle.Logic.Characters
             }
 
             //Get possible tiles, within constraints of map, including only square titles from current position (not diagonally)
-            if (map[Convert.ToInt32(currentLocation.X), 0, zMax] == CoverType.FullCover || map[Convert.ToInt32(currentLocation.X), 0, zMax] == CoverType.HalfCover)
+            if (map[Convert.ToInt32(currentLocation.X), 0, zMax] == MapObjectType.FullCover || map[Convert.ToInt32(currentLocation.X), 0, zMax] == MapObjectType.HalfCover)
             {
                 result.Add(new Vector3(currentLocation.X, 0f, zMax));
             }
-            if (map[xMax, 0, Convert.ToInt32(currentLocation.Z)] == CoverType.FullCover || map[xMax, 0, Convert.ToInt32(currentLocation.Z)] == CoverType.HalfCover)
+            if (map[xMax, 0, Convert.ToInt32(currentLocation.Z)] == MapObjectType.FullCover || map[xMax, 0, Convert.ToInt32(currentLocation.Z)] == MapObjectType.HalfCover)
             {
                 result.Add(new Vector3(xMax, 0f, currentLocation.Z));
             }
-            if (map[Convert.ToInt32(currentLocation.X), 0, zMin] == CoverType.FullCover || map[Convert.ToInt32(currentLocation.X), 0, zMin] == CoverType.HalfCover)
+            if (map[Convert.ToInt32(currentLocation.X), 0, zMin] == MapObjectType.FullCover || map[Convert.ToInt32(currentLocation.X), 0, zMin] == MapObjectType.HalfCover)
             {
                 result.Add(new Vector3(currentLocation.X, 0f, zMin));
             }
-            if (map[xMin, 0, Convert.ToInt32(currentLocation.Z)] == CoverType.FullCover || map[xMin, 0, Convert.ToInt32(currentLocation.Z)] == CoverType.HalfCover)
+            if (map[xMin, 0, Convert.ToInt32(currentLocation.Z)] == MapObjectType.FullCover || map[xMin, 0, Convert.ToInt32(currentLocation.Z)] == MapObjectType.HalfCover)
             {
                 result.Add(new Vector3(xMin, 0f, currentLocation.Z));
             }

@@ -22,22 +22,25 @@ namespace Battle.Logic.Map
             string[,,] map = new string[xMax, yMax, zMax];
 
             //Initialize the map
-            int y = 0;
-            for (int z = 0; z < zMax; z++)
+            for (int y = 0; y < yMax; y++)
             {
-                for (int x = 0; x < xMax; x++)
+                for (int z = 0; z < zMax; z++)
                 {
-                    map[x, y, z] = initialString;
+                    for (int x = 0; x < xMax; x++)
+                    {
+                        map[x, y, z] = initialString;
+                    }
                 }
             }
 
             return map;
         }
 
-
+        //Test all locations within range to see if they are reachable
         public static List<Vector3> GetMapArea(string[,,] map, Vector3 sourceLocation, int range, bool lookingForFOV = true, bool includeSourceLocation = false)
         {
             int startingX = (int)sourceLocation.X;
+            int startingY = (int)sourceLocation.Y;
             int startingZ = (int)sourceLocation.Z;
 
             //Use the range to find the borders in each primary direction from the starting location
@@ -50,6 +53,16 @@ namespace Battle.Logic.Map
             if (maxX > map.GetLength(0) - 1)
             {
                 maxX = map.GetLength(0) - 1;
+            }
+            int minY = startingY - range;
+            if (minY < 0)
+            {
+                minY = 0;
+            }
+            int maxY = startingY + range;
+            if (maxY > map.GetLength(1) - 1)
+            {
+                maxY = map.GetLength(1) - 1;
             }
             int minZ = startingZ - range;
             if (minZ < 0)
@@ -67,21 +80,29 @@ namespace Battle.Logic.Map
             //Add the top and bottom rows
             for (int x = minX; x <= maxX; x++)
             {
-                borderTiles.Add(new Vector3(x, 0, minZ));
-                borderTiles.Add(new Vector3(x, 0, maxZ));
+                borderTiles.Add(new Vector3(x, minY, minZ));
+                borderTiles.Add(new Vector3(x, minY, maxZ));
+                borderTiles.Add(new Vector3(x, maxY, minZ));
+                borderTiles.Add(new Vector3(x, maxY, maxZ));
             }
             //Add the left and right sides
             for (int z = minZ; z < maxZ; z++)
             {
-                borderTiles.Add(new Vector3(minX, 0, z));
-                borderTiles.Add(new Vector3(maxX, 0, z));
+                borderTiles.Add(new Vector3(minX, minY, z));
+                borderTiles.Add(new Vector3(maxX, minY, z));
+                borderTiles.Add(new Vector3(minX, maxY, z));
+                borderTiles.Add(new Vector3(maxX, maxY, z));
             }
 
             //For each border tile, draw a line from the starting point to the border
             HashSet<Vector3> results = new HashSet<Vector3>();
             foreach (Vector3 borderItem in borderTiles)
             {
-                List<Vector3> singleLineCheck = FieldOfView.GetPointsOnLine(new Vector3(startingX, 0, startingZ), borderItem);
+                if (borderItem == new Vector3(5,1,9))
+                {
+                    int i = 5;
+                }
+                List<Vector3> singleLineCheck = FieldOfView.GetPointsOnLine(new Vector3(startingX, startingY, startingZ), borderItem);
                 if (singleLineCheck.Count > 0 &&
                     singleLineCheck[singleLineCheck.Count - 1].X == startingX &&
                     singleLineCheck[singleLineCheck.Count - 1].Z == startingZ)
@@ -99,14 +120,14 @@ namespace Battle.Logic.Map
                     if (fovItem.X >= 0 && fovItem.Y >= 0 && fovItem.Z >= 0)
                     {
                         //If we find an object, stop adding tiles
-                        if (lookingForFOV && map[(int)fovItem.X, (int)fovItem.Y, (int)fovItem.Z] == CoverType.FullCover)
+                        if (lookingForFOV && map[(int)fovItem.X, (int)fovItem.Y, (int)fovItem.Z] == MapObjectType.FullCover)
                         {
                             //Add the wall
                             results.Add(fovItem);
                             //Then break!
                             break;
                         }
-                        else if ((int)fovItem.X == startingX && (int)fovItem.Z == startingZ)
+                        else if ((int)fovItem.X == startingX && (int)fovItem.Y == startingY && (int)fovItem.Z == startingZ)
                         {
                             //Don't add this one, it's the origin/ where the character is looking from
                         }
@@ -132,30 +153,45 @@ namespace Battle.Logic.Map
 
         public static double GetLengthOfLine(Vector3 start, Vector3 end, int decimals = 0)
         {
-            double lineLength = Math.Sqrt(Math.Pow((end.X - start.X), 2) + Math.Pow((end.Z - start.Z), 2));
-            return Math.Round(lineLength, decimals);
+            return Math.Round(Vector3.Distance(start, end), decimals);            
         }
 
         public static string GetMapString(string[,,] map, bool stripOutBlanks = false)
         {
             int xMax = map.GetLength(0);
-            //int yMax = map.GetLength(1);
+            int yMax = map.GetLength(1);
             int zMax = map.GetLength(2);
             StringBuilder sb = new StringBuilder();
             sb.Append(Environment.NewLine);
-            int y = 0;
             for (int z = zMax - 1; z >= 0; z--)
             {
                 StringBuilder sbLine = new StringBuilder();
                 for (int x = 0; x < xMax; x++)
                 {
-                    if (map[x, y, z] != "")
+                    //If there are multiple levels and underground on y=0, use y=1 value
+                    if (yMax > 0 && map[x, 0, z] == MapObjectType.Underground)
                     {
-                        sbLine.Append(map[x, y, z] + " ");
+                        if (map[x, 1, z] != "")
+                        {
+                            sbLine.Append(map[x, 1, z]);
+                        }
+                        else
+                        {
+                            sbLine.Append(MapObjectType.NoCoverYIs1); // •
+                        }
+                        sbLine.Append(' ');
                     }
                     else
                     {
-                        sbLine.Append(". ");
+                        if (map[x, 0, z] != "")
+                        {
+                            sbLine.Append(map[x, 0, z]);
+                        }
+                        else
+                        {
+                            sbLine.Append(MapObjectType.NoCoverYIs0); // ·
+                        }
+                        sbLine.Append(' ');
                     }
                 }
                 sbLine.Append(Environment.NewLine);
@@ -163,7 +199,7 @@ namespace Battle.Logic.Map
                 //This optimizes the ASCII maps to remove white space
                 if (stripOutBlanks)
                 {
-                    int dotCount = sbLine.ToString().Split('.').Count() - 1;
+                    int dotCount = sbLine.ToString().Split('·').Count() - 1;
                     if (dotCount < xMax)
                     {
                         sb.Append(sbLine.ToString());
@@ -185,6 +221,10 @@ namespace Battle.Logic.Map
                 if (map[(int)item.X, (int)item.Y, (int)item.Z] == "")
                 {
                     map[(int)item.X, (int)item.Y, (int)item.Z] = tile;
+                }
+                else if (map[(int)item.X, (int)item.Y, (int)item.Z] == MapObjectType.NoCoverYIs1)
+                {
+                    map[(int)item.X, (int)item.Y, (int)item.Z] = "◙";
                 }
             }
             return map;
@@ -260,19 +300,20 @@ namespace Battle.Logic.Map
                 {
                     if (mapMask[x, y, z] != "")
                     {
-                        sb.Append(mapMask[x, y, z] + " ");
+                        sb.Append(mapMask[x, y, z]);
                     }
                     else
                     {
                         if (map[x, y, z] != "")
                         {
-                            sb.Append(map[x, y, z] + " ");
+                            sb.Append(map[x, y, z]);
                         }
                         else
                         {
-                            sb.Append(". ");
+                            sb.Append(MapObjectType.NoCoverYIs0);
                         }
                     }
+                    sb.Append(' ');
                 }
                 sb.Append(Environment.NewLine);
             }

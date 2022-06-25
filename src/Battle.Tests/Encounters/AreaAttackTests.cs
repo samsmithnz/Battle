@@ -24,13 +24,13 @@ namespace Battle.Tests.Encounters
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Team team1 = new(1);
             team1.Characters.Add(fred);
@@ -79,13 +79,13 @@ Fred is ready to level up
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Team team1 = new(1);
             team1.Characters.Add(fred);
@@ -137,13 +137,13 @@ Fred is ready to level up
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             fred.Abilities.Add(AbilityPool.ShredderAbility());
             Team team1 = new(1);
@@ -196,13 +196,13 @@ Fred is ready to level up
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             fred.Abilities.Add(AbilityPool.ShredderAbility());
             Team team1 = new(1);
@@ -254,13 +254,13 @@ High cover downgraded to low cover at <2, 0, 3>
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Team team1 = new(1);
             team1.Characters.Add(fred);
@@ -308,13 +308,13 @@ High cover downgraded to low cover at <2, 0, 3>
             //  "H" = enemy/harry
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ H . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ H · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Character harry = CharacterPool.CreateHarryHero(map, new(3, 0, 3));
             harry.HitpointsCurrent = 4;
@@ -374,13 +374,13 @@ Fred is ready to level up
             //  "H" = enemy/harry
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ H . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ H · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Character harry = CharacterPool.CreateHarryHero(map, new(3, 0, 3));
             harry.HitpointsCurrent = 4;
@@ -440,13 +440,13 @@ Fred is ready to level up
             //  "H" = enemy/harry
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ H . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ H · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Character harry = CharacterPool.CreateHarryHero(map, new(3, 0, 3));
             harry.HitpointsCurrent = 4;
@@ -504,13 +504,13 @@ Fred is ready to level up
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             fred.Abilities.Add(AbilityPool.BiggestBoomsAbility1());
             fred.Abilities.Add(AbilityPool.BiggestBoomsAbility2());
@@ -575,13 +575,13 @@ Fred is ready to level up
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . E . .
-            //  . . ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · E · .
+            //  · · ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0), 5);
             Team team1 = new(1);
             team1.Characters.Add(fred);
@@ -603,12 +603,12 @@ Fred is ready to level up
 ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ 
 ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ 
 ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ ▓ 
-. . ▓ . . . ▓ ▓ ▓ ▓ 
-. . ▓ . . . . ▓ ▓ ▓ 
-. . ■ . . . . . ▓ ▓ 
-. . . . . . . . ▓ ▓ 
-. . . . . . . . ▓ ▓ 
-. . P . . . . . ▓ ▓ 
+· · ▓ · · · ▓ ▓ ▓ ▓ 
+· · ▓ · · · · ▓ ▓ ▓ 
+· · ■ · · · · · ▓ ▓ 
+· · · · · · · · ▓ ▓ 
+· · · · · · · · ▓ ▓ 
+· · P · · · · · ▓ ▓ 
 ";
             Assert.AreEqual(expectedString, fredFOVString);
 
@@ -692,7 +692,7 @@ High cover downgraded to low cover at <2, 0, 3>
         {
             //Arrange
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             fred.UtilityWeaponEquipped = null;
             Team team1 = new(1);
@@ -724,13 +724,13 @@ High cover downgraded to low cover at <2, 0, 3>
             //  "E" = enemy/jethro
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . .
-            //  . E ■ . . 
-            //  . . . . . 
-            //  . . . . .
-            //  . . P . .
+            //  · · · · .
+            //  · E ■ · · 
+            //  · · · · · 
+            //  · · · · .
+            //  · · P · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
-            map[2, 0, 3] = CoverType.FullCover; //Add cover 
+            map[2, 0, 3] = MapObjectType.FullCover; //Add cover 
             Character fred = CharacterPool.CreateFredHero(map, new(2, 0, 0));
             Team team1 = new(1);
             team1.Characters.Add(fred);

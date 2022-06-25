@@ -92,7 +92,7 @@ namespace Battle.Tests.Map
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
             for (int i = 0; i < 10; i++)
             {
-                map[8, 0, i] = CoverType.FullCover;
+                map[8, 0, i] = MapObjectType.FullCover;
             }
 
             //Act

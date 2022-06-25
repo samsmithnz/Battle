@@ -53,7 +53,7 @@ namespace Battle.Tests.Map
             Vector3 source = new(1, 0, 3);
             Vector3 target = new(4, 0, 2);
             string[,,] map = MapCore.InitializeMap(5, 1, 5);
-            map[3, 0, 2] = CoverType.FullCover;
+            map[3, 0, 2] = MapObjectType.FullCover;
 
             //Act
             List<Vector3> results = FieldOfView.GetPointsOnLine(source, target);
@@ -84,16 +84,16 @@ namespace Battle.Tests.Map
             //  "P" = player/fred
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . P . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · P · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
             int range = 1;
             Vector3 startingLocation = new(4, 0, 4);
@@ -115,24 +115,24 @@ namespace Battle.Tests.Map
             //  "P" = player/fred
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . ■ P ■ . . .
-            //  . . . . ■ ■ ■ . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · ■ P ■ · · .
+            //  · · · · ■ ■ ■ · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
             int range = 1;
             Vector3 startingLocation = new(4, 0, 4);
-            map[3, 0, 4] = CoverType.FullCover;
-            map[3, 0, 3] = CoverType.FullCover;
-            map[4, 0, 3] = CoverType.FullCover;
-            map[5, 0, 3] = CoverType.FullCover;
-            map[5, 0, 4] = CoverType.FullCover;
+            map[3, 0, 4] = MapObjectType.FullCover;
+            map[3, 0, 3] = MapObjectType.FullCover;
+            map[4, 0, 3] = MapObjectType.FullCover;
+            map[5, 0, 3] = MapObjectType.FullCover;
+            map[5, 0, 4] = MapObjectType.FullCover;
 
             //Act
             List<Vector3> results = FieldOfView.GetFieldOfView(map, startingLocation, range);
@@ -149,16 +149,16 @@ namespace Battle.Tests.Map
             //  "P" = player/fred
             //  CoverType.FullCover = cover
             //  "." = open ground
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . P . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
-            //  . . . . . . . . . .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · P · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
+            //  · · · · · · · · · .
             string[,,] map = MapCore.InitializeMap(10, 1, 10);
             int range = 12;
             Vector3 startingLocation = new(4, 0, 4);
@@ -179,19 +179,19 @@ namespace Battle.Tests.Map
             //  CoverType.FullCover = cover
             //  "." = open ground
 
-            //  . . . . . 
-            //  . . . . . 
-            //  . ■ P ■ . 
-            //  . ■ ■ ■ . 
-            //  . . . . . 
+            //  · · · · · 
+            //  · · · · · 
+            //  · ■ P ■ · 
+            //  · ■ ■ ■ · 
+            //  · · · · · 
             string[,,] map = MapCore.InitializeMap(5, 1, 5);
             int range = 10;
             Vector3 startingLocation = new(2, 0, 2);
-            map[1, 0, 2] = CoverType.FullCover;
-            map[1, 0, 1] = CoverType.FullCover;
-            map[2, 0, 1] = CoverType.FullCover;
-            map[3, 0, 1] = CoverType.FullCover;
-            map[3, 0, 2] = CoverType.FullCover;
+            map[1, 0, 2] = MapObjectType.FullCover;
+            map[1, 0, 1] = MapObjectType.FullCover;
+            map[2, 0, 1] = MapObjectType.FullCover;
+            map[3, 0, 1] = MapObjectType.FullCover;
+            map[3, 0, 2] = MapObjectType.FullCover;
 
             //Act
             List<Vector3> results = FieldOfView.GetFieldOfView(map, startingLocation, range);

@@ -220,7 +220,7 @@ namespace Battle.Logic.Characters
                 if (map != null)
                 {
                     //Add the found tiles action
-                    List<Vector3> foundTiles = MapCore.FindAdjacentTile(map, Location, CoverType.ToggleSwitchOn);
+                    List<Vector3> foundTiles = MapCore.FindAdjacentTile(map, Location, MapObjectType.ToggleSwitchOn);
                     if (foundTiles != null && foundTiles.Count > 0)
                     {
                         options.Add(new CharacterAction() { Name = "_toggle", Caption = "Toggle switch", KeyBinding = "0" });

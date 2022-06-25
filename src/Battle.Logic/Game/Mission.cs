@@ -158,7 +158,7 @@ namespace Battle.Logic.Game
             {
                 if (objective.Type == MissionObjectiveType.ToggleSwitch)
                 {
-                    Map[(int)objective.Location.X, (int)objective.Location.Y, (int)objective.Location.Z] = CoverType.ToggleSwitchOn;
+                    Map[(int)objective.Location.X, (int)objective.Location.Y, (int)objective.Location.Z] = MapObjectType.ToggleSwitchOn;
                 }
             }
         }
@@ -297,11 +297,11 @@ namespace Battle.Logic.Game
         public bool ToggleSwitch(Character sourceCharacter)
         {
             //Check that the source character is next to a tile that toggles a switch
-            List<Vector3> foundTiles = MapCore.FindAdjacentTile(Map, sourceCharacter.Location, CoverType.ToggleSwitchOn);
+            List<Vector3> foundTiles = MapCore.FindAdjacentTile(Map, sourceCharacter.Location, MapObjectType.ToggleSwitchOn);
             if (foundTiles != null && foundTiles.Count > 0)
             {
                 //Update the map with an off toggle switch
-                Map[(int)foundTiles[0].X, (int)foundTiles[0].Y, (int)foundTiles[0].Z] = CoverType.ToggleSwitchOff;
+                Map[(int)foundTiles[0].X, (int)foundTiles[0].Y, (int)foundTiles[0].Z] = MapObjectType.ToggleSwitchOff;
 
                 //Mark the objective as complete
                 for (int i = 0; i < Objectives.Count; i++)

@@ -15,10 +15,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            // 3 . E . .
-            // 2 . ■ . . 
-            // 1 . S ■ E 
-            // 0 . . . .
+            // 3 · E · .
+            // 2 · ■ · · 
+            // 1 · S ■ E 
+            // 0 · · · .
             //   0 1 2 3          
             Vector3 startingLocation = new(1, 0, 1);
             int width = 4;
@@ -51,10 +51,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  E . . .
-            //  . ■ . . 
-            //  . S ■ .
-            //  . . . E             
+            //  E · · .
+            //  · ■ · · 
+            //  · S ■ .
+            //  · · · E             
             Vector3 startingLocation = new(1, 0, 1);
             int width = 4;
             int height = 4;
@@ -86,10 +86,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  E ■ . .  
-            //  . S ■ .
-            //  . . E .             
+            //  · · · .
+            //  E ■ · ·  
+            //  · S ■ .
+            //  · · E ·             
             Vector3 startingLocation = new(1, 0, 1);
             int width = 4;
             int height = 4;
@@ -123,10 +123,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            // 3 . . E .
-            // 2 . . ■ . 
-            // 1 E ■ S . 
-            // 0 . . . .
+            // 3 · · E .
+            // 2 · · ■ · 
+            // 1 E ■ S · 
+            // 0 · · · .
             //   0 1 2 3          
             Vector3 startingLocation = new(2, 0, 1);
             int width = 4;
@@ -159,10 +159,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  . . . E
-            //  . . ■ . 
-            //  . ■ S .
-            //  E . . .            
+            //  · · · E
+            //  · · ■ · 
+            //  · ■ S .
+            //  E · · ·            
             Vector3 startingLocation = new(2, 0, 1);
             int width = 4;
             int height = 4;
@@ -194,10 +194,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  . . ■ E 
-            //  . ■ S .
-            //  . E . .            
+            //  · · · .
+            //  · · ■ E 
+            //  · ■ S .
+            //  · E · ·            
             Vector3 startingLocation = new(2, 0, 1);
             int width = 4;
             int height = 4;
@@ -231,9 +231,9 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  . . . . 
-            //  . S ■ . 
-            //  . ■ E .
+            //  · · · · 
+            //  · S ■ · 
+            //  · ■ E .
             Vector3 startingLocation = new(1, 0, 1);
             int width = 4;
             int height = 3;
@@ -264,11 +264,11 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             // In Cover
-            // 4 . . E . .
-            // 3 . . ■ . .  
+            // 4 · · E · .
+            // 3 · · ■ · ·  
             // 2 E ■ S ■ E
-            // 1 . . ■ . .
-            // 0 . . E . . 
+            // 1 · · ■ · .
+            // 0 · · E · · 
             //   0 1 2 3 4            
             Vector3 startingLocation = new(2, 0, 2);
             int width = 5;
@@ -305,11 +305,11 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             // In Cover
-            // 4 . . . . .
-            // 3 . E ■ E .  
-            // 2 . ■ S ■ .
-            // 1 . E ■ E .
-            // 0 . . . . . 
+            // 4 · · · · .
+            // 3 · E ■ E ·  
+            // 2 · ■ S ■ .
+            // 1 · E ■ E .
+            // 0 · · · · · 
             //   0 1 2 3 4            
             Vector3 startingLocation = new(2, 0, 2);
             int width = 5;

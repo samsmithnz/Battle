@@ -22,8 +22,8 @@ namespace Battle.Tests.Scenarios
             {
                 Map = MapCore.InitializeMap(50, 1, 50)
             };
-            mission.Map[6, 0, 5] = CoverType.FullCover;
-            mission.Map[20, 0, 11] = CoverType.FullCover;
+            mission.Map[6, 0, 5] = MapObjectType.FullCover;
+            mission.Map[20, 0, 11] = MapObjectType.FullCover;
             Character fred = CharacterPool.CreateFredHero(mission.Map, new(5, 0, 5));
             fred.ActionPointsCurrent = 1;
             Team team1 = new(1)
@@ -76,56 +76,56 @@ namespace Battle.Tests.Scenarios
             Assert.AreEqual(new(9, 0, 10), destination);
             string mapMovementString = MapCore.GetMapStringWithItems(mission.Map, MovementPossibileTiles.ExtractVectorListFromKeyValuePair(movementPossibileTiles));
             string mapMovementResult = @"
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. o o o o o o o o o . . . . . . . . . . ■ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o . . . . . . . . . P . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o P ■ o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· o o o o o o o o o · · · · · · · · · · ■ · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o · · · · · · · · · P · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o P ■ o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
 ";
             Assert.AreEqual(mapMovementResult, mapMovementString);
             List<MovementAction> movementResults = mission.MoveCharacter(fred, team1, team2, destination);
@@ -139,60 +139,60 @@ Fred is moving from <8, 0, 9> to <9, 0, 10>
 ";
             Assert.AreEqual(log, CharacterMovement.LogString(movementResults));
 
-            //Fred aims at Jethro, who is behind high cover. 
+            //Fred aims at Jethro, who is behind high cover· 
             string mapString1 = fred.GetCharactersInViewMapString(mission.Map, team2.Characters);
             Assert.AreEqual(fred.TargetCharacters[0], jethro.Name);
             string mapStringExpected1 = @"
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-. . o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . . . . . . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o ■ . . . . o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o P o o o o o o o o o o P o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o ■ o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o o . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o o . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . 
-o o o o . . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o o . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
-o o o . . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . . . . . . . . . . . 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+· · o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · · · · · · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o ■ · · · · o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o P o o o o o o o o o o P o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o ■ o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o o · o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o o · o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · 
+o o o o · · o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o o · o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
+o o o · · o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o · · · · · · · · · · · 
 ";
             Assert.AreEqual(mapStringExpected1, mapString1);
 
@@ -204,7 +204,7 @@ o o o . . o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o o . 
             Assert.AreEqual(3, damageOptions.DamageLow);
             Assert.AreEqual(5, damageOptions.DamageHigh);
 
-            //Fred shoots at Jethro, who is behind high cover. He hits him. 
+            //Fred shoots at Jethro, who is behind high cover· He hits him· 
             EncounterResult encounter1 = mission.AttackCharacter(fred,
                 fred.WeaponEquipped,
                 jethro,

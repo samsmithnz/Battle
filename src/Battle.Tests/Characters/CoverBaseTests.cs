@@ -21,9 +21,9 @@ namespace Battle.Tests.Characters
         public void Test_WithoutCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  . S . 
-            //  . . . 
+            //  · · · 
+            //  · S · 
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -78,9 +78,9 @@ namespace Battle.Tests.Characters
         public void Test_WithNorthFullCover_NoEnemy()
         {
             // Arrange
-            //  . ■ . 
-            //  . S .
-            //  . . . 
+            //  · ■ · 
+            //  · S .
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -111,9 +111,9 @@ namespace Battle.Tests.Characters
         public void Test_WithNorthHalfCover_NoEnemy()
         {
             // Arrange
-            //  . □ . 
-            //  . S .
-            //  . . . 
+            //  · □ · 
+            //  · S .
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -144,9 +144,9 @@ namespace Battle.Tests.Characters
         public void Test_WithEastFullCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  . S ■ 
-            //  . . . 
+            //  · · · 
+            //  · S ■ 
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -176,9 +176,9 @@ namespace Battle.Tests.Characters
         public void Test_WithEastHalfCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  . S □ 
-            //  . . . 
+            //  · · · 
+            //  · S □ 
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -209,9 +209,9 @@ namespace Battle.Tests.Characters
         public void Test_WithSouthFullCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  . S . 
-            //  . ■ . 
+            //  · · · 
+            //  · S · 
+            //  · ■ · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -242,9 +242,9 @@ namespace Battle.Tests.Characters
         public void Test_WithSouthHalfCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  . S . 
-            //  . □ . 
+            //  · · · 
+            //  · S · 
+            //  · □ · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -275,9 +275,9 @@ namespace Battle.Tests.Characters
         public void Test_WithWestFullCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  ■ S . 
-            //  . . . 
+            //  · · · 
+            //  ■ S · 
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;
@@ -308,9 +308,9 @@ namespace Battle.Tests.Characters
         public void Test_WithWestHalfCover_NoEnemy()
         {
             // Arrange
-            //  . . . 
-            //  □ S . 
-            //  . . . 
+            //  · · · 
+            //  □ S · 
+            //  · · · 
             Vector3 startingLocation = new(1, 0, 1);
             int width = 3;
             int height = 3;

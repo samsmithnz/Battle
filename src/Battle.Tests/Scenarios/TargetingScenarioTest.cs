@@ -172,7 +172,7 @@ Fred is ready to level up
             //            mission.MoveToNextTurn();
 
             //            //Turn 4 - Team 1 starts, and aborts mission
-            //            //Fred shoots at Jethro and kills him. 
+            //            //Fred shoots at Jethro and kills him· 
             //            EncounterResult encounter1 = mission.AttackCharacter(fred,
             //                fred.WeaponEquipped,
             //                jethro,

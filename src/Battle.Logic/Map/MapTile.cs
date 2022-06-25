@@ -81,7 +81,7 @@ namespace Battle.Logic.Map
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}: {2}", this.Location.X, this.Location.Y, this.State);
+            return string.Format("({0}, {1}, {2}): {3}", this.Location.X, this.Location.Y, this.Location.Z, this.State);
         }
 
         /// <summary>

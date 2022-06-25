@@ -16,6 +16,10 @@ namespace Battle.Logic.Map
                 List<Vector3> possibleTiles = MapCore.GetMapArea(map, sourceLocation, range * i, false);
                 foreach (Vector3 item in possibleTiles)
                 {
+                    if ( item == new Vector3(5,0,6))
+                    {
+                        int j = 5;
+                    }
                     //Find a path to this target location
                     PathFindingResult result = PathFinding.FindPath(map, sourceLocation, item);
                     //If we could find a path, the cost of the path is within the range, and we haven't already identified a route to this tile, add it

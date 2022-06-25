@@ -80,14 +80,14 @@ namespace Battle.Logic.Encounters
                 switch (map[(int)item.X, (int)item.Y, (int)item.Z])
                 {
                     //Full cover becomes low cover
-                    case CoverType.FullCover:
-                        map[(int)item.X, (int)item.Y, (int)item.Z] = CoverType.HalfCover;
+                    case MapObjectType.FullCover:
+                        map[(int)item.X, (int)item.Y, (int)item.Z] = MapObjectType.HalfCover;
                         affectedMap.Add(new KeyValuePair<Vector3, int>(item, 1));
                         log.Add("High cover downgraded to low cover at " + item.ToString());
                         break;
                     //Low cover becomes no cover
-                    case CoverType.HalfCover:
-                        map[(int)item.X, (int)item.Y, (int)item.Z] = CoverType.NoCover;
+                    case MapObjectType.HalfCover:
+                        map[(int)item.X, (int)item.Y, (int)item.Z] = MapObjectType.NoCover;
                         affectedMap.Add(new KeyValuePair<Vector3, int>(item, 1));
                         log.Add("Low cover downgraded to no cover at " + item.ToString());
                         break;
@@ -190,14 +190,14 @@ namespace Battle.Logic.Encounters
                         switch (map[(int)missedLocation.X, (int)missedLocation.Y, (int)missedLocation.Z])
                         {
                             //Full cover becomes low cover
-                            case CoverType.FullCover:
-                                map[(int)missedLocation.X, (int)missedLocation.Y, (int)missedLocation.Z] = CoverType.HalfCover;
+                            case MapObjectType.FullCover:
+                                map[(int)missedLocation.X, (int)missedLocation.Y, (int)missedLocation.Z] = MapObjectType.HalfCover;
                                 affectedMap.Add(new KeyValuePair<Vector3, int>(missedLocation, 1));
                                 log.Add("High cover downgraded to low cover at " + missedLocation.ToString());
                                 break;
                             //Low cover becomes no cover
-                            case CoverType.HalfCover:
-                                map[(int)missedLocation.X, (int)missedLocation.Y, (int)missedLocation.Z] = CoverType.NoCover;
+                            case MapObjectType.HalfCover:
+                                map[(int)missedLocation.X, (int)missedLocation.Y, (int)missedLocation.Z] = MapObjectType.NoCover;
                                 affectedMap.Add(new KeyValuePair<Vector3, int>(missedLocation, 1));
                                 log.Add("Low cover downgraded to no cover at " + missedLocation.ToString());
                                 break;

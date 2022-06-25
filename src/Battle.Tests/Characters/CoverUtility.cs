@@ -25,7 +25,7 @@ namespace Battle.Tests.Characters
             {
                 foreach (Vector3 item in highCoverLocations)
                 {
-                    map[(int)item.X, (int)item.Y, (int)item.Z] = CoverType.FullCover;
+                    map[(int)item.X, (int)item.Y, (int)item.Z] = MapObjectType.FullCover;
                 }
             }
             //assign cover locations, (currently just "□", for "low cover wall")
@@ -33,7 +33,7 @@ namespace Battle.Tests.Characters
             {
                 foreach (Vector3 item in lowCoverLocations)
                 {
-                    map[(int)item.X, (int)item.Y, (int)item.Z] = CoverType.HalfCover;
+                    map[(int)item.X, (int)item.Y, (int)item.Z] = MapObjectType.HalfCover;
                 }
             }
 

@@ -17,7 +17,7 @@ namespace Battle.Logic.Map
                 {
                     if (((x != 0 && z != 0) || (x != width - 1 && z != height - 1)) && probOfMapBeingBlocked > RandomNumber.GenerateRandomNumber(1, 100))
                     {
-                        map[x, y, z] = CoverType.FullCover;
+                        map[x, y, z] = MapObjectType.FullCover;
                     }
                 }
             }

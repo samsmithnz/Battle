@@ -6,7 +6,7 @@ A POC to build the battle logic for a turn based game idea, similar to [XCOM](ht
 ![Current Release](https://img.shields.io/github/release/samsmithnz/Battle/all.svg)
 
 ### Current features include:
-- Basic map generation, in 2d world, with x and z axis (y axis to come later)
+- Basic map generation, in 2d world, with x, y, and z axis (note that y axis/height is not multi-level, just different heights - e.g. a hill, not a multi-level building)
 - Basic pathfinding, movement and identification of possible movement tiles
 - Basic attacks between multiple characters, with weapons, special abilities, and range taken into account
 - Basic high and low cover, with cover destruction

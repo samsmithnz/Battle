@@ -55,12 +55,14 @@ namespace Battle.Logic.Map
             _height = map.GetLength(1);
             _breadth = map.GetLength(2);
             _tiles = new MapTile[_width, _height, _breadth];
-            int y = 0;
-            for (int z = 0; z < _breadth; z++)
+            for (int y = 0; y < _height; y++)
             {
-                for (int x = 0; x < _width; x++)
+                for (int z = 0; z < _breadth; z++)
                 {
-                    _tiles[x, y, z] = new MapTile(x, y, z, map[x, y, z], _endLocation);
+                    for (int x = 0; x < _width; x++)
+                    {
+                        _tiles[x, y, z] = new MapTile(x, y, z, map[x, y, z], _endLocation);
+                    }
                 }
             }
         }
@@ -78,8 +80,12 @@ namespace Battle.Logic.Map
 
             // Sort by F-value so that the shortest possible routes are considered first
             nextTiles.Sort((tile1, tile2) => tile1.F.CompareTo(tile2.F));
-            foreach (var nextTile in nextTiles)
+            foreach (MapTile nextTile in nextTiles)
             {
+                if (nextTile.Location == new Vector3(5, 0, 4))
+                {
+                    int i = 4;
+                }
                 // Check whether the end tile has been reached
                 if (nextTile.Location == endTile.Location)
                 {
@@ -109,21 +115,26 @@ namespace Battle.Logic.Map
             List<MapTile> walkableTiles = new List<MapTile>();
             IEnumerable<Vector3> nextLocations = GetAdjacentLocations(fromTile.Location);
 
-            foreach (var location in nextLocations)
+            foreach (Vector3 location in nextLocations)
             {
                 int x = (int)location.X;
                 int y = (int)location.Y;
                 int z = (int)location.Z;
+                if (location == new Vector3(5, 0, 5))
+                {
+                    int i = 5;
+                }
 
                 // Stay within the grid's boundaries
-                if (x < 0 || x >= _width || z < 0 || z >= _breadth)
+                if (x < 0 || x >= _width || z < 0 || z >= _breadth || y < 0 || y >= _height)
                 {
                     continue;
                 }
 
                 MapTile tile = _tiles[x, y, z];
+
                 // Ignore non-walkable tiles
-                if (tile.TileType != "")
+                if (tile.TileType != "" && tile.TileType != MapObjectType.Ladder)
                 {
                     continue;
                 }
@@ -164,17 +175,28 @@ namespace Battle.Logic.Map
         /// <returns>The locations as an IEnumerable of Points</returns>
         private static IEnumerable<Vector3> GetAdjacentLocations(Vector3 fromLocation)
         {
-            return new Vector3[]
+            List<Vector3> list = new List<Vector3>();
+            list.AddRange(new Vector3[]
+                {
+                    new Vector3(fromLocation.X - 1, fromLocation.Y, fromLocation.Z - 1),
+                    new Vector3(fromLocation.X - 1, fromLocation.Y, fromLocation.Z - 0),
+                    new Vector3(fromLocation.X - 1, fromLocation.Y, fromLocation.Z + 1),
+                    new Vector3(fromLocation.X - 0, fromLocation.Y, fromLocation.Z + 1),
+                    new Vector3(fromLocation.X + 1, fromLocation.Y, fromLocation.Z + 1),
+                    new Vector3(fromLocation.X + 1, fromLocation.Y, fromLocation.Z + 0),
+                    new Vector3(fromLocation.X + 1, fromLocation.Y, fromLocation.Z - 1),
+                    new Vector3(fromLocation.X + 0, fromLocation.Y, fromLocation.Z - 1)
+                });
+            //Add the top and bottom
+            if (fromLocation.Y == 1)
             {
-                new Vector3(fromLocation.X - 1,0, fromLocation.Z - 1),
-                new Vector3(fromLocation.X - 1, 0,fromLocation.Z  ),
-                new Vector3(fromLocation.X - 1, 0,fromLocation.Z + 1),
-                new Vector3(fromLocation.X,   0,fromLocation.Z + 1),
-                new Vector3(fromLocation.X + 1, 0,fromLocation.Z + 1),
-                new Vector3(fromLocation.X + 1, 0,fromLocation.Z  ),
-                new Vector3(fromLocation.X + 1, 0,fromLocation.Z - 1),
-                new Vector3(fromLocation.X,   0,fromLocation.Z - 1)
-            };
+                list.Add(new Vector3(fromLocation.X, fromLocation.Y - 1, fromLocation.Z));
+            }
+            else if (fromLocation.Y == 0)
+            {
+                list.Add(new Vector3(fromLocation.X, fromLocation.Y + 1, fromLocation.Z));
+            }
+            return list;
         }
     }
 }

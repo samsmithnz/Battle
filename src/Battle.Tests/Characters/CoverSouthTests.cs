@@ -22,10 +22,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . E .
-            //  . S . . 
-            //  . ■ . . 
-            //  . . . .
+            //  · · E .
+            //  · S · · 
+            //  · ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -52,10 +52,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  . S E . 
-            //  . ■ . . 
-            //  . . . .
+            //  · · · .
+            //  · S E · 
+            //  · ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -82,10 +82,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  . S . . 
-            //  . ■ E . 
-            //  . . . .
+            //  · · · .
+            //  · S · · 
+            //  · ■ E · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -112,10 +112,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  . . . .
-            //  . S . . 
-            //  . ■ . . 
-            //  . . E .
+            //  · · · .
+            //  · S · · 
+            //  · ■ · · 
+            //  · · E .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -141,10 +141,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  . . . .
-            //  . S . . 
-            //  . ■ . . 
-            //  . E . .
+            //  · · · .
+            //  · S · · 
+            //  · ■ · · 
+            //  · E · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -170,10 +170,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  In Cover
-            //  . . . .
-            //  . S . . 
-            //  . ■ . . 
-            //  E . . .
+            //  · · · .
+            //  · S · · 
+            //  · ■ · · 
+            //  E · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -199,10 +199,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  . S . . 
-            //  E ■ . . 
-            //  . . . .
+            //  · · · .
+            //  · S · · 
+            //  E ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -230,10 +230,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . . . .
-            //  E S . . 
-            //  . ■ . . 
-            //  . . . .
+            //  · · · .
+            //  E S · · 
+            //  · ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -260,10 +260,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  E . . .
-            //  . S . . 
-            //  . ■ . . 
-            //  . . . .
+            //  E · · .
+            //  · S · · 
+            //  · ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
@@ -290,10 +290,10 @@ namespace Battle.Tests.Characters
         {
             // Arrange
             //  Flanked
-            //  . E . .
-            //  . S . . 
-            //  . ■ . . 
-            //  . . . .
+            //  · E · .
+            //  · S · · 
+            //  · ■ · · 
+            //  · · · .
             Vector3 startingLocation = new(1, 0, 2);
             int width = 4;
             int height = 4;
